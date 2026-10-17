@@ -110,7 +110,8 @@
 </main>
 
 <script>
-  // Ordered (Bayer 8x8) grey dither over slate blue, densest top left, fading out diagonally.
+  // Ordered (Bayer 8x8) grey dither over slate blue, densest top left, fading out diagonally,
+  // with a lighter patch in the top right so the edge isn't a straight line.
   // Drawn small and scaled up.
   const canvas = document.getElementById("dither");
   const ctx = canvas.getContext("2d");
@@ -132,7 +133,11 @@
     const img = ctx.createImageData(w, h);
     for (let y = 0; y < h; y++) {
       for (let x = 0; x < w; x++) {
-        const t = 0.5 * Math.max(0, 1 - (x / w + y / h) / 1.1) ** 1.5;
+        const u = x / w, v = y / h;
+        const t = Math.max(
+          0.5 * Math.max(0, 1 - (u + v) / 1.1) ** 1.5,
+          0.3 * Math.max(0, 1 - (1 - u + v * 1.6) / 0.7) ** 1.5,
+        );
         const c = t > (BAYER[(y % 8) * 8 + (x % 8)] + 0.5) / 64 ? LIGHT : DARK;
         const i = (y * w + x) * 4;
         img.data[i] = c[0];
