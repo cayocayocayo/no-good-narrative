@@ -44,8 +44,9 @@
     display: flex;
     align-items: center;
     gap: clamp(1.5rem, 4vw, 3.5rem);
+    transform: translateY(-1.5rem);
   }
-  h1 { font-weight: normal; line-height: 1; transform: translateY(-1.5rem); }
+  h1 { font-weight: normal; line-height: 1; }
   .no-good {
     display: block;
     font-family: var(--display);
@@ -81,8 +82,7 @@
   .soon::after { content: " (soon)"; font-size: 0.8em; opacity: 0.6; }
   /* Too narrow for side by side: stack, and the break turns horizontal. */
   @media (max-width: 640px) {
-    .row { flex-direction: column; gap: 2.5rem; }
-    h1 { transform: none; }
+    .row { flex-direction: column; gap: 2.5rem; transform: none; }
     ul { text-align: center; }
     hr { align-self: center; width: 33vw; min-width: 140px; height: 0; min-height: 0; border-left: 0; border-top: 1px solid var(--ink); }
   }
