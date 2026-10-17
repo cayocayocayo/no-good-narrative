@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>no-good narratives</title>
+<title>no-good narrative</title>
 <meta name="description" content="Projects, writing and events.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Instrument+Serif&family=Jacquard+24&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Jacquard+24&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #1b2539;
@@ -49,16 +49,15 @@
   h1 { font-weight: normal; line-height: 1; }
   .no-good {
     display: block;
-    margin-top: -0.6em; /* sit a little high, leaving room for "narratives" */
     font-family: var(--display);
     font-size: clamp(4rem, 16vw, 10rem);
   }
-  /* 0.83 of the "no-good" size makes it span the same width (tuned to these two fonts). */
-  .narratives {
+  /* Scaled so "narrative" spans the same width as "no-good". */
+  .narrative {
     display: block;
-    margin-top: 0.5rem;
-    font-family: "Instrument Serif", serif;
-    font-size: calc(clamp(4rem, 16vw, 10rem) * 0.83);
+    margin-top: -0.15em;
+    font-family: var(--display);
+    font-size: calc(clamp(4rem, 16vw, 10rem) * 0.9);
     text-align: center;
   }
   hr {
@@ -95,7 +94,7 @@
   <div class="row">
   <h1>
     <span class="no-good">no-good</span>
-    <span class="narratives">narratives</span>
+    <span class="narrative">narrative</span>
   </h1>
 
   <hr>
