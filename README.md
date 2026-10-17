@@ -7,7 +7,7 @@ One-page landing site linking to projects, writing and events. Plain HTML, no bu
 Everything is in `index.html`. To turn a placeholder into a link, change
 `<span class="soon">Writing</span>` to `<a href="https://...">Writing</a>`.
 
-Fonts: "no-good" uses Gossip if a licensed webfont is added (put `gossip.woff2` in `fonts/` and add an `@font-face` named "Gossip"), otherwise Jacquard 24 from Google Fonts. So does "narrative"; the links use IBM Plex Sans.
+Fonts: "no-good" uses Gossip if a licensed webfont is added (put `gossip.woff2` in `fonts/` and add an `@font-face` named "Gossip"), otherwise Jacquard 24 from Google Fonts. So does "narrative"; the links use EB Garamond.
 
 ## Deploy (Cloudflare Pages, free)
 
