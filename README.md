@@ -4,7 +4,7 @@ One-page landing site linking to projects, writing and events. Plain HTML, no bu
 
 ## Edit
 
-Everything is in `index.html`. To turn a placeholder into a link, change
+Pages: `index.html` (landing) and `about.html`. Shared look in `style.css`, background in `dither.js`.
 `<span class="soon">Writing</span>` to `<a href="https://...">Writing</a>`.
 
 Fonts: the wordmark is Gossip High Pixel by Deborah Khodanovich, self-hosted from `fonts/` under the SIL Open Font License (`fonts/OFL.txt`; keep that file and the on-page credit with the fonts). The links use EB Garamond from Google Fonts.

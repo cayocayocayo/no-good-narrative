@@ -4,102 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>no-good narrative</title>
-<meta name="description" content="Projects, writing and events.">
+<meta name="description" content="A DIY label for political technology: tools, research and events.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-<style>
-  /* Gossip by Deborah Khodanovich, SIL Open Font License (fonts/OFL.txt). */
-  @font-face { font-family: "Gossip"; src: url("fonts/Gossip-HighPixel.otf") format("opentype"); font-display: block; }
-  :root {
-    --bg: #1b2539;
-    --ink: #ffffff;
-    --display: "Gossip", serif;
-    --text: "EB Garamond", Garamond, serif;
-    --mark: clamp(2.1rem, 8.4vw, 5.25rem);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--text);
-    -webkit-font-smoothing: antialiased;
-  }
-  #dither {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    image-rendering: pixelated;
-    z-index: -1;
-  }
-  main {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 18vh 16px;
-  }
-  .row {
-    display: flex;
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    transform: translateY(-1.5rem);
-  }
-  h1 { font-weight: normal; line-height: 1; }
-  .no-good {
-    display: block;
-    font-family: var(--display);
-    font-size: var(--mark);
-  }
-  /* Scaled so "narrative" spans the same width as "no-good". */
-  .narrative {
-    display: block;
-    margin-top: 0.4em;
-    font-family: var(--display);
-    font-size: calc(var(--mark) * 0.92);
-    text-align: center;
-  }
-  hr {
-    align-self: stretch;
-    width: 0;
-    height: 33vh;
-    min-height: 180px;
-    margin: auto 0;
-    border: 0;
-    border-left: 1px solid var(--ink);
-  }
-  ul { list-style: none; text-align: left; }
-  li + li { margin-top: 1.1rem; }
-  a, .soon {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 1.3rem;
-    letter-spacing: 0.01em;
-  }
-  a { border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-  a:hover, a:focus-visible { border-bottom-color: var(--ink); outline: none; }
-  .soon::after { content: " (soon)"; font-size: 0.8em; opacity: 0.6; }
-  .credit {
-    position: fixed;
-    bottom: 16px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 0.8rem;
-    opacity: 0.6;
-  }
-  .credit a { font-size: inherit; letter-spacing: 0; }
-  /* Too narrow for side by side: stack, and the break turns horizontal. */
-  @media (max-width: 640px) {
-    .row { flex-direction: column; gap: 2.5rem; transform: none; }
-    ul { text-align: center; }
-    hr { align-self: center; width: 33vw; min-width: 140px; height: 0; min-height: 0; border-left: 0; border-top: 1px solid var(--ink); }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="dither" aria-hidden="true"></canvas>
@@ -114,62 +23,16 @@
 
   <!-- A project with no link yet stays a <span class="soon">. -->
   <ul>
-    <li><span class="soon">Writing</span></li>
-    <li><span class="soon">.hauntd</span></li>
-    <li><span class="soon">Events at Newspeak House</span></li>
-    <li><span class="soon">About</span></li>
-    <li><span class="soon">Contact</span></li>
+    <li><a href="https://www.transhealthcareradarcymru.uk/">Trans Healthcare Radar Cymru</a></li>
+    <li><a href="https://substack.com/@nogoodnarrative/">Newsletter</a></li>
+    <li><a href="https://affordancesandhauntings.neocities.org/">Blog</a></li>
+    <li><a href="https://open.spotify.com/artist/3zPJhqb7gBjyWjiFcwnsAa">Music</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
   </div>
 </main>
 <footer class="credit">Type: <a href="http://dvorit.ca/">Gossip by Deborah Khodanovich</a></footer>
 
-<script>
-  // Ordered (Bayer 8x8) grey dither over slate blue, densest top left, fading out diagonally,
-  // with a lighter patch in the top right so the edge isn't a straight line.
-  // Drawn small and scaled up.
-  const canvas = document.getElementById("dither");
-  const ctx = canvas.getContext("2d");
-  const PIXEL = 3;
-  const DARK = [27, 37, 57];
-  const LIGHT = [62, 66, 74];
-  const BAYER = [
-    0, 32, 8, 40, 2, 34, 10, 42, 48, 16, 56, 24, 50, 18, 58, 26,
-    12, 44, 4, 36, 14, 46, 6, 38, 60, 28, 52, 20, 62, 30, 54, 22,
-    3, 35, 11, 43, 1, 33, 9, 41, 51, 19, 59, 27, 49, 17, 57, 25,
-    15, 47, 7, 39, 13, 45, 5, 37, 63, 31, 55, 23, 61, 29, 53, 21,
-  ];
-
-  function draw() {
-    const w = Math.ceil(innerWidth / PIXEL);
-    const h = Math.ceil(innerHeight / PIXEL);
-    canvas.width = w;
-    canvas.height = h;
-    const img = ctx.createImageData(w, h);
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        const u = x / w, v = y / h;
-        const t = Math.max(
-          0.5 * Math.max(0, 1 - (u + v) / 1.1) ** 1.5,
-          0.3 * Math.max(0, 1 - (1 - u + v * 1.6) / 0.7) ** 1.5,
-        );
-        const c = t > (BAYER[(y % 8) * 8 + (x % 8)] + 0.5) / 64 ? LIGHT : DARK;
-        const i = (y * w + x) * 4;
-        img.data[i] = c[0];
-        img.data[i + 1] = c[1];
-        img.data[i + 2] = c[2];
-        img.data[i + 3] = 255;
-      }
-    }
-    ctx.putImageData(img, 0, 0);
-  }
-
-  let pending;
-  addEventListener("resize", () => {
-    cancelAnimationFrame(pending);
-    pending = requestAnimationFrame(draw);
-  });
-  draw();
-</script>
+<script src="dither.js"></script>
 </body>
 </html>

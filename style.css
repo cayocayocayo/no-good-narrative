@@ -1,0 +1,100 @@
+/* Gossip by Deborah Khodanovich, SIL Open Font License (fonts/OFL.txt). */
+@font-face { font-family: "Gossip"; src: url("fonts/Gossip-HighPixel.otf") format("opentype"); font-display: block; }
+:root {
+  --bg: #1b2539;
+  --ink: #ffffff;
+  --display: "Gossip", serif;
+  --text: "EB Garamond", Garamond, serif;
+  --mark: clamp(2.1rem, 8.4vw, 5.25rem);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+#dither {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  z-index: -1;
+}
+main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18vh 16px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  transform: translateY(-1.5rem);
+}
+h1 { font-weight: normal; line-height: 1; }
+.no-good {
+  display: block;
+  font-family: var(--display);
+  font-size: var(--mark);
+}
+/* Scaled so "narrative" spans the same width as "no-good". */
+.narrative {
+  display: block;
+  margin-top: 0.4em;
+  font-family: var(--display);
+  font-size: calc(var(--mark) * 0.92);
+  text-align: center;
+}
+hr {
+  align-self: stretch;
+  width: 0;
+  height: 33vh;
+  min-height: 180px;
+  margin: auto 0;
+  border: 0;
+  border-left: 1px solid var(--ink);
+}
+ul { list-style: none; text-align: left; }
+li + li { margin-top: 1.1rem; }
+a, .soon {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+}
+a { border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+a:hover, a:focus-visible { border-bottom-color: var(--ink); outline: none; }
+.soon::after { content: " (soon)"; font-size: 0.8em; opacity: 0.6; }
+.credit {
+  position: fixed;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+.credit a { font-size: inherit; letter-spacing: 0; }
+h1 a { font-size: inherit; letter-spacing: 0; border: 0; }
+.about {
+  max-width: 30rem;
+  text-align: left;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.about p + p { margin-top: 1rem; }
+.about a, .about .soon { font-size: inherit; letter-spacing: 0; }
+.about a { border-bottom-color: rgba(255, 255, 255, 0.4); }
+/* Too narrow for side by side: stack, and the break turns horizontal. */
+@media (max-width: 640px) {
+  .row { flex-direction: column; gap: 2.5rem; transform: none; }
+  ul { text-align: center; }
+  hr { align-self: center; width: 33vw; min-width: 140px; height: 0; min-height: 0; border-left: 0; border-top: 1px solid var(--ink); }
+}
