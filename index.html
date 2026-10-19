@@ -7,13 +7,17 @@
 <meta name="description" content="Projects, writing and events.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Jacquard+24&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 <style>
+  /* Gossip by Deborah Khodanovich, SIL Open Font License (fonts/OFL.txt). */
+  @font-face { font-family: "Gossip"; src: url("fonts/Gossip-HighPixel.otf") format("opentype"); font-display: block; }
+  @font-face { font-family: "Gossip Cross Stitch"; src: url("fonts/Gossip-HighCrossStitch.otf") format("opentype"); font-display: block; }
   :root {
     --bg: #1b2539;
     --ink: #ffffff;
-    --display: "Gossip", "Jacquard 24", serif;
+    --display: "Gossip", serif;
     --text: "EB Garamond", Garamond, serif;
+    --mark: clamp(2.1rem, 8.4vw, 5.25rem);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
@@ -50,14 +54,14 @@
   .no-good {
     display: block;
     font-family: var(--display);
-    font-size: clamp(4rem, 16vw, 10rem);
+    font-size: var(--mark);
   }
   /* Scaled so "narrative" spans the same width as "no-good". */
   .narrative {
     display: block;
-    margin-top: -0.3em;
+    margin-top: 0.4em;
     font-family: var(--display);
-    font-size: calc(clamp(4rem, 16vw, 10rem) * 0.9);
+    font-size: calc(var(--mark) * 0.92);
     text-align: center;
   }
   hr {
@@ -80,6 +84,16 @@
   a { border-bottom: 1px solid transparent; transition: border-color 0.2s; }
   a:hover, a:focus-visible { border-bottom-color: var(--ink); outline: none; }
   .soon::after { content: " (soon)"; font-size: 0.8em; opacity: 0.6; }
+  .credit {
+    position: fixed;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+  .credit a { font-size: inherit; letter-spacing: 0; }
   /* Too narrow for side by side: stack, and the break turns horizontal. */
   @media (max-width: 640px) {
     .row { flex-direction: column; gap: 2.5rem; transform: none; }
@@ -109,6 +123,7 @@
   </ul>
   </div>
 </main>
+<footer class="credit">Type: <a href="http://dvorit.ca/">Gossip by Deborah Khodanovich</a></footer>
 
 <script>
   // Ordered (Bayer 8x8) grey dither over slate blue, densest top left, fading out diagonally,
