@@ -83,15 +83,15 @@ a:hover, a:focus-visible { border-bottom-color: var(--ink); outline: none; }
 }
 .credit a { font-size: inherit; letter-spacing: 0; }
 h1 a { font-size: inherit; letter-spacing: 0; border: 0; }
-.about {
+.text {
   max-width: 30rem;
   text-align: left;
   font-size: 1.15rem;
   line-height: 1.5;
 }
-.about p + p { margin-top: 1rem; }
-.about a, .about .soon { font-size: inherit; letter-spacing: 0; }
-.about a { border-bottom-color: rgba(255, 255, 255, 0.4); }
+.text p + p { margin-top: 1rem; }
+.text a, .text .soon { font-size: inherit; letter-spacing: 0; }
+.text a { border-bottom-color: rgba(255, 255, 255, 0.4); }
 /* Too narrow for side by side: stack, and the break turns horizontal. */
 @media (max-width: 640px) {
   .row { flex-direction: column; gap: 2.5rem; transform: none; }
